@@ -8,7 +8,7 @@ Because I like it. Because I think very easily in terms of combinators. Because,
 
 ## Why Javascript
 
-Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming very decent. But there are terrible inconsistencies in the Javascript common libraries. Consider this:
+Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming very decent. But there are terrible inconsistencies in the Javascript common libraries and language semantics. Consider this:
 
 ```
 > '#2 3,4: 5x6'.match(/\d+/g)
