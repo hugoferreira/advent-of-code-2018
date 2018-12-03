@@ -8,11 +8,30 @@ Because I like it. Because I think very easily in terms of combinators. Because,
 
 ## Why Javascript
 
-Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming very decent. But there are terrible inconsistencies in the Javascript common libraries. 
+Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming very decent. But there are terrible inconsistencies in the Javascript common libraries. Consider this:
+
+```
+> '#2 3,4: 5x6'.match(/\d+/g)
+[ '2', '3', '4', '5', '6' ]
+```
+
+... so ...
+
+```
+> '#2 3,4: 5x6'.match(/\d+/g).map(parseInt)
+[ 2, NaN, NaN, NaN, NaN ]
+```
+
+What?... I mean, WTF? It's *infuriating*! And the solution is a real gem:
+
+```
+> '#2 3,4: 5x6'.match(/\d+/g).map(x => +x)
+[ 2, 3, 4, 5, 6 ]
+```
 
 ## Why both?
 
-Once you start writing JS in a functional way, it's almost bearable. It's also a very good way to force you to learn it.
+~Once you start writing JS in a functional way, it's almost (!) bearable~ It's a good way to force you to learn it.
 
 ## Your solutions are not (always) pure
 
