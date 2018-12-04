@@ -9,3 +9,4 @@ input.forEach(a => input.forEach(b => {
     if (countEquals(a, b).false == 1)
         console.debug(filterEquals(a, b).join(''))
 }))
+

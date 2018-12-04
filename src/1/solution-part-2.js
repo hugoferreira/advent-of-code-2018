@@ -7,16 +7,18 @@ function* infiniteFrequencies() {
     while(true) for(const h of listOfFrequencies) yield h
 }
 
-const s = new Set([0])
-let currentFrequency = 0
+function solve() {
+    const s = new Set([0])
+    let currentFrequency = 0
 
-for (const h of infiniteFrequencies()) {
-    currentFrequency += h
+    for (const h of infiniteFrequencies()) {
+        currentFrequency += h
 
-    if (s.has(currentFrequency)) break
-    else s.add(currentFrequency)
+        if (s.has(currentFrequency))
+            return currentFrequency
+
+        s.add(currentFrequency)
+    }
 }
 
-console.debug(currentFrequency)
-console.debug(`We tested ${s.size} different frequencies`)
-console.debug('done')
+console.debug(solve())

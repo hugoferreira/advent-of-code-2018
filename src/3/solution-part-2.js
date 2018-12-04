@@ -10,4 +10,4 @@ const data = input.map(line => {
 const bbIntersect = (a, b) => !(b.x0 > a.x1 || b.x1 < a.x0 || b.y0 > a.y1 || b.y1 < a.y0)
 const dontIntersect = data.filter(a => data.every(b => a.id === b.id || !bbIntersect(a, b)))
 
-console.debug(dontIntersect[0].id) //?
+console.debug(dontIntersect[0].id)
