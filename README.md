@@ -22,16 +22,20 @@ Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming
 [ 2, NaN, NaN, NaN, NaN ]
 ```
 
-What?... I mean, WTF? It's *infuriating*! And the solution is a real gem:
+What?... I mean, WTF? It's *infuriating*! And the *typical* solution is a real gem:
 
 ```
 > '#2 3,4: 5x6'.match(/\d+/g).map(x => +x)
 [ 2, 3, 4, 5, 6 ]
 ```
 
+## You know that happens because...
+
+Yes, yes. `parseInt` accepts two arguments. And `.reduce` expects a function with up to three arguments. It doesn't matter. It's unintuitive, it's too permissive, and it leads to an high rate of *wtf/s*.
+
 ## Why both?
 
-~Once you start writing JS in a functional way, it's almost (!) bearable~ It's a good way to force you to learn it.
+~Once you start writing JS in a functional way, it's almost bearable.~ It's a good way to force you to learn it.
 
 ## Your solutions are not (always) pure
 
