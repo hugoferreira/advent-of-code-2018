@@ -1,21 +1,20 @@
 const readFileSync = require('fs').readFileSync
 const _ = require('lodash/fp')
 
-const input = readFileSync('input.05').toString()
-const reacts = (a, b) => b !== undefined && a.toLowerCase() === b.toLowerCase() && a !== b
-const slide = (window) => (a) => _.zip(_.toArray(a))(_.drop(window)(a))
+const input = readFileSync('src/5/input.txt').toString()
+const reacts = (a, b) => a.toLowerCase() === b.toLowerCase() && a !== b
 
-let data = slide(1)(input)
+function reduce(data) {
+    let pivot = 0
 
-do {
-    const pivot = _.findIndex(p => reacts(p[0], p[1]))(data)
-    if (pivot == -1) {
-        break
-    } else if (pivot > 0) {
-        data.splice(pivot - 1, 3, [data[(pivot - 1)][0], data[(pivot + 1)][1]])
-    } else {
-        data.splice(pivot, 2)
+    while (pivot !== data.length - 1) {
+        if (reacts(data[pivot], data[pivot + 1])) {
+            data = data.slice(0, pivot) + data.slice(pivot + 2)
+            pivot = Math.max(0, pivot - 1)
+        } else pivot += 1
     }
-} while (true)
 
-console.log(data.length)
+    return data
+}
+
+console.log(reduce(input).length)
