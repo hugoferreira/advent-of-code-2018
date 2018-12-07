@@ -1,7 +1,6 @@
-const readFileSync = require('fs').readFileSync
 const _ = require('lodash/fp')
 
-const input = readFileSync('src/4/input.txt').toString().split('\n')
+const input = require('fs').readFileSync('src/4/input.txt').toString().split('\n')
 const regex = /\[(?<y>\d+)-(?<m>\d+)-(?<d>\d+) (?<hh>\d+):(?<mm>\d+)\] (?<msg>.*)/
 const idExp = /Guard #(\d+) begins shift/
 

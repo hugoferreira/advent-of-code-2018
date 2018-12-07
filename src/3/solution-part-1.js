@@ -1,7 +1,6 @@
-const readFileSync = require('fs').readFileSync
 const _ = require('lodash/fp')
 
-const input = readFileSync('src/3/input.txt').toString().split('\n')
+const input = require('fs').readFileSync('src/3/input.txt').toString().split('\n')
 const data = input.map(l => l.match(/\d+/g).map(x => parseInt(x, 10)))
 
 const fill = (s) => _.range(s[2], s[4] + s[2]).flatMap(y =>

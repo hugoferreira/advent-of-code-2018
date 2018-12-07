@@ -1,23 +1,16 @@
-const readFileSync = require('fs').readFileSync
+const fs = require('fs').readFileSync('src/1/input.txt').toString().split('\n').map(i => parseInt(i))
 
-const f = readFileSync('src/1/input.txt')
-const listOfFrequencies = f.toString().split('\n').map(i => parseInt(i))
-
-function* infiniteFrequencies() {
-    while(true) for(const h of listOfFrequencies) yield h
-}
+function* inffs() { while (true) for (const h of fs) yield h }
 
 function solve() {
     const s = new Set([0])
-    let currentFrequency = 0
+    let f = 0
 
-    for (const h of infiniteFrequencies()) {
-        currentFrequency += h
+    for (const h of inffs()) {
+        f += h
 
-        if (s.has(currentFrequency))
-            return currentFrequency
-
-        s.add(currentFrequency)
+        if (s.has(f)) return f
+        s.add(f)
     }
 }
 

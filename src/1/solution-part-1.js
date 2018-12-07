@@ -1,6 +1,3 @@
-const _ = require('lodash/fp')
-const readFileSync = require('fs').readFileSync
+const data = require('fs').readFileSync('src/1/input.txt').toString().split('\n').map(i => parseInt(i))
 
-const data = readFileSync('src/1/input.txt').toString().split('\n').map(i => parseInt(i))
-
-console.debug(_.sum(data))
+console.debug(data.reduce((a, e) => a + e))

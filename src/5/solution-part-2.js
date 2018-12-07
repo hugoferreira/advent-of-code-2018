@@ -1,7 +1,6 @@
-const readFileSync = require('fs').readFileSync
 const _ = require('lodash/fp')
 
-const input = readFileSync('src/5/input.txt').toString()
+const input = require('fs').readFileSync('src/5/input.txt').toString()
 const reacts = (a, b) => a.toLowerCase() === b.toLowerCase() && a !== b
 
 function reduce(data) {

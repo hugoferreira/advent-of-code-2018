@@ -10,12 +10,11 @@ const dist = (x, y) => (p, i) => [i, Math.abs(p[0] - x) + Math.abs(p[1] - y)]
 
 const grid = _.range(y0, y1 + 1).map(y =>
                 _.range(x0, x1 + 1).map(x => {
-                    const [[id, a], [idb, b], ...r] = _.sortBy(_.last)(data.map(dist(x, y)))
+                    const [[id, a], [__, b]] = _.sortBy(_.last)(data.map(dist(x, y)))
                     return (a !== b) ? id : -1
                 }))
 
-const es = new Set(_.flatten([_.first, _.last, _.map(_.first), _.map(_.last)].map(f => f(grid)))
-                    .map(_.toString)) // Thank you JS, for your map keys being strings... -.-'
+const es = new Set([_.first, _.last, _.map(_.first), _.map(_.last)].flatMap(f => f(grid)).map(_.toString))
 
 console.log(_.pipe(_.flatten,
                    _.groupBy(_.identity),
