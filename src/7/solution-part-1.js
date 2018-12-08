@@ -4,9 +4,8 @@ const input = require('fs').readFileSync('src/7/input.txt').toString().split('\n
 const regex = / [A-Z] /g
 const data = input.map(line => line.match(regex).map(_.trim))
 
-const ready = _.pipe(_.rejectValues(v => v.length > 0), _.sortKey, _.fst, _.fst)
-
-let deps    = _.uniq(_.flatten(data)).map(e => [e, _.keys(_.filterValues(_.eq(e))(data))])
+let   deps  = _.uniq(_.flatten(data)).map(e => [e, _.keys(_.filterValues(_.eq(e))(data))])
+const ready = _.pipe(_.rejectValues(_.isNotEmpty), _.sortKey, _.fst, _.fst)
 const next  = [ready(deps)]
 const order = []
 
