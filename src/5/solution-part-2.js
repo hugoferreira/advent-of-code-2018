@@ -1,4 +1,4 @@
-const _ = require('lodash/fp')
+const _ = require('../combinators')
 
 const input = require('fs').readFileSync('src/5/input.txt').toString()
 const reacts = (a, b) => a.toLowerCase() === b.toLowerCase() && a !== b

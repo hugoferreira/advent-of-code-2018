@@ -17,7 +17,7 @@ const grid = _.range(y0, y1 + 1).map(y =>
 const es = new Set([_.first, _.last, _.keys, _.values].flatMap(f => f(grid)).map(_.toString))
 
 console.log(_.pipe(_.flatten,
-                   _.groupBy(_.identity),
+                   _.group,
                    _.toPairs,
                    _.reject(p => es.has(p[0])),
                    _.map(_.pipe(_.last, _.size)),
