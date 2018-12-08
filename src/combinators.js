@@ -1,4 +1,4 @@
-const _ = require('lodash/fp')
+const _ = require('lodash/fp');
 
 export const id = _.identity
 export const trim = _.trim
@@ -21,6 +21,8 @@ export const pipe = _.pipe
 export const take = _.take
 export const drop = _.drop
 export const concat = _.concat
+export const cons = (xs) => (ys) => _.concat(xs, ys)
+
 export const partition = _.partition
 export const isEmpty = _.pipe(_.size, _.eq(0))
 export const isNotEmpty = _.pipe(_.size, _.lt(0))
@@ -37,13 +39,15 @@ export const groupBy = _.groupBy
 export const group = _.groupBy(_.identity)
 export const toPairs = _.toPairs
 export const size = _.size
-export const toArray = _.toArray
 export const maxBy = _.maxBy
 export const indexOf = _.indexOf
 export const flatMap = _.flatMap
 export const zip = _.zip
 export const contains = _.contains
 export const histogram = _.pipe(group, _.map(_.size))
+export const nth = _.nth
+export const takeAt = (i, width) => _.slice(i, i + width)
+export const reduce = _.reduce
 
 export const tupleId = (p) => p[0] === p[1]
 export const swap = (f) => (a, b, ...r) => f(b, a, ...r)
@@ -54,7 +58,9 @@ export const sortValue = _.sortBy(_.last)
 export const sortByKey = (f) => _.sortBy(k => f(k[0]))
 export const sortByValue = (f) => _.sortBy(k => f(k[1]))
 
+export const mapValue = (f) => (k) => [k[0], f(k[1])]
 export const mapValues = (f) => _.map(k => [k[0], f(k[1])])
+export const mapKey = (f) => (k) => [f(k[0]), k[1]]
 export const mapKeys = (f) => _.map(k => [f(k[0]), k[1]])
 export const bimap = (g) => (f) => _.map(k => [g(k[0]), f(k[1])])
 
@@ -63,3 +69,6 @@ export const filterValues = (f) => _.filter(k => f(k[1]))
 
 export const rejectKeys = (f) => _.reject(k => f(k[0]))
 export const rejectValues = (f) => _.reject(k => f(k[1]))
+
+export const toArray = _.toArray
+export const toIntArray = _.map(x => parseInt(x, 10))
