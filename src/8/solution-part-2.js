@@ -1,6 +1,6 @@
 const _ = require('../combinators.js')
 
-const data = require('fs').readFileSync('src/8/input.txt').toString().split(' ').map(i => parseInt(i, 10))
+const data = _.toIntArray(require('fs').readFileSync('src/8/input.txt').toString().split(' '))
 
 function readData(ix) {
     const childs = _.nth(ix)(data)
