@@ -1,40 +1,34 @@
-const _ = require('lodash/fp')
+const _ = require('../combinators.js')
 
 const input = require('fs').readFileSync('src/7/input.txt').toString().split('\n')
 const regex = / [A-Z] /g
 const data = input.map(line => line.match(regex).map(_.trim))
-const workers = 5
+const nworkers = 5
+
 const nodes = _.uniq(_.flatten(data))
-let   graph = new Map(nodes.map(e => [e, new Array()]))
+const ready = _.pipe(_.rejectValues(v => v.length > 0), _.sortKey, _.keys)
 const times = new Map(nodes.map(e => [e, (e.charCodeAt(0) - 65) + 60]))
 
-data.forEach(e => graph.get(e[1]).push(e[0]))
+let deps = nodes.map(e => [e, _.keys(_.filterValues(_.eq(e))(data))])
+let work = []
+let next = ready(deps)
+let step = 0
 
-const nextUnits = () => _.reject(k => graph.get(k).length > 0)(_.toArray(graph.keys()))
+while (_.isNotEmpty(work) || _.isNotEmpty(next)) {
+    const availableWorkers = nworkers - work.length
+    work = _.concat(work, _.take(availableWorkers)(next))
+    next = _.drop(availableWorkers)(next)
 
-const L = new Array()
-let W = new Array()
-let S = _.sortBy(_.identity)(nextUnits())
-let counter = 0
+    const [t, f] = _.partition(n => times.get(n) > 0)(work)
 
-while (W.length > 0 || S.length > 0) {
-    const ns = _.take(workers - W.length)(S)
-    S = _.drop(workers - W.length)(S)
-    W = _.concat(W, ns)
-
-    const [t, f] = _.partition(n => times.get(n) > 0)(W)
     t.forEach(n => times.set(n, times.get(n) - 1))
     f.forEach(n => {
-        W = _.reject(s => s === n)(W)
-        graph.delete(n)
-        L.push(n)
-        graph = new Map(_.map(kvp => [kvp[0], _.reject(v => v === n)(kvp[1])])(_.toPairs(graph)))
-
-        const m = _.reject(u => W.some(w => u == w) || L.some(l => u == l) || S.some(l => u == l))(nextUnits())
-        if (m.length > 0) S = _.sortBy(_.identity)(_.concat(S, m))
+        work = _.reject(_.eq(n))(work)
+        deps = _.pipe(_.rejectKeys(_.eq(n)), _.mapValues(_.reject(_.eq(n))))(deps)
+        next = _.concat(next, _.reject(u => work.some(_.eq(u)))(ready(deps)))
     })
 
-    counter++
+    step++
 }
-               // JMQZELVYXTIGPHFNSOADKWBRUC
-counter //?
+
+console.log(step) // 1133
