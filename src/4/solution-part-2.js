@@ -1,4 +1,4 @@
-const _ = require('lodash/fp')
+const _ = require('../combinators')
 
 const input = require('fs').readFileSync('src/4/input.txt').toString().split('\n')
 const regex = /\[(?<y>\d+)-(?<m>\d+)-(?<d>\d+) (?<hh>\d+):(?<mm>\d+)\] (?<msg>.*)/
@@ -26,4 +26,4 @@ for (const e of sorted) {
 const sleeper = _.maxBy(p => _.max(p[1]))(_.toPairs(sched))
 const minute = _.indexOf(_.max(sleeper[1]))(sleeper[1])
 
-console.debug(minute * sleeper[0])
+console.log(minute * sleeper[0]) // 78452

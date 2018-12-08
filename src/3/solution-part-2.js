@@ -4,7 +4,7 @@ const data = input.map(line => {
     return { id, x0, y0, x1: x0 + width - 1, y1: y0 + height - 1 }
 })
 
-const bbIntersect = (a, b) => !(b.x0 > a.x1 || b.x1 < a.x0 || b.y0 > a.y1 || b.y1 < a.y0)
-const dontIntersect = data.filter(a => data.every(b => a.id === b.id || !bbIntersect(a, b)))
+const disjoint = (a, b) => b.x0 > a.x1 || b.x1 < a.x0 || b.y0 > a.y1 || b.y1 < a.y0
+const result = data.filter(a => data.every(b => a.id === b.id || disjoint(a, b)))
 
-console.debug(dontIntersect[0].id)
+console.log(result[0].id) // 625

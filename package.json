@@ -12,8 +12,5 @@
     "lodash": "^4.17.11",
     "lodash-fp": "^0.10.4"
   },
-  "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-plugin-lodash-fp": "^2.2.0-a1"
-  }
+  "devDependencies": {}
 }

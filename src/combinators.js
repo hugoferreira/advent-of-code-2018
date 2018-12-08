@@ -8,10 +8,13 @@ export const flatten = _.flatten
 export const uniq = _.uniq
 export const filter = _.filter
 export const sortBy = _.sortBy
-export const keys = _.map(k => k[0])
-export const values = _.map(k => k[1])
+export const firsts = _.map(_.first)
+export const lasts = _.map(_.last)
+export const keys = firsts
+export const values = lasts
 export const first = _.first
 export const fst = _.first
+export const last = _.last
 export const snd = _.pipe(_.drop(1), _.first)
 export const eq = _.eq
 export const pipe = _.pipe
@@ -19,14 +22,34 @@ export const take = _.take
 export const drop = _.drop
 export const concat = _.concat
 export const partition = _.partition
-export const contains = _.contains
 export const isEmpty = _.pipe(_.size, _.eq(0))
 export const isNotEmpty = _.pipe(_.size, _.lt(0))
+export const includes = _.includes
+export const includesFrom = _.includesFrom
+export const chunk = _.chunk
+export const min = _.min
+export const max = _.max
+export const range = _.range
+export const sum = _.sum
+export const countBy = _.countBy
+export const toString = _.toString
+export const groupBy = _.groupBy
+export const group = _.groupBy(_.identity)
+export const toPairs = _.toPairs
+export const size = _.size
+export const toArray = _.toArray
+export const maxBy = _.maxBy
+export const indexOf = _.indexOf
+export const flatMap = _.flatMap
+export const zip = _.zip
+export const contains = _.contains
+export const histogram = _.pipe(group, _.map(_.size))
 
+export const tupleId = (p) => p[0] === p[1]
 export const swap = (f) => (a, b, ...r) => f(b, a, ...r)
 
-export const sortKey = _.sortBy(k => k[0])
-export const sortValue = _.sortBy(k => k[1])
+export const sortKey = _.sortBy(_.first)
+export const sortValue = _.sortBy(_.last)
 
 export const sortByKey = (f) => _.sortBy(k => f(k[0]))
 export const sortByValue = (f) => _.sortBy(k => f(k[1]))
