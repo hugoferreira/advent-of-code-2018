@@ -1,4 +1,4 @@
-# advent-of-code-2018
+# Advent of Code 2018
 
 Solutions to [Advent of Code 2018](https://adventofcode.com) programming contest, using Functional(ish) Javascript.
 
@@ -49,6 +49,6 @@ Like Haskell and Scala? Been there, done that.
 
 In the spirit of a little competition, I don't think we should publish them before the contest ends. First five days were free... the rest you'll have to wait :)
 
-## So you are competing?
+## So you are competing...
 
 More or less. The timezone is absurdly annoying (5AM GMT? Really?), and I would prefer to solve them in the end of the day; so I am competing just for the stars. Still, I am registered in [this private leaderboard](https://adventofcode.com/2018/leaderboard/private/view/240997).
