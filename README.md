@@ -45,7 +45,7 @@ Yeah, well... JS kind of makes it a huge hassle sometimes, and I have limited ti
 
 Like Haskell and Scala? Been there, done that.
 
-## Why did you stop publishing your solutions after day 5
+## Why did you stop publishing your solutions after day 5?
 
 In the spirit of a little competition, I don't think we should publish them before the contest ends. First five days were free... the rest you'll have to wait :)
 
