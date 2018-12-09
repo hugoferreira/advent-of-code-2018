@@ -2,11 +2,11 @@
 
 Solutions to [Advent of Code 2018](https://adventofcode.com) programming contest, using Functional(ish) Javascript.
 
-## Why Functional
+## Why Functional?
 
 Because I like it. Because I think very easily in terms of combinators. Because, why not?
 
-## Why Javascript
+## Why Javascript?
 
 Because I hate it. I mean, EcmaScript is becoming decent. Typescript is becoming very decent. But there are terrible inconsistencies in the Javascript common libraries and language semantics. Consider this:
 
@@ -37,7 +37,7 @@ Yes, yes. `parseInt` accepts two arguments. And `.reduce` expects a function wit
 
 ~Once you start writing JS in a functional way, it's almost bearable.~ It's a good way to force you to learn it.
 
-## Your solutions are not (always) pure
+## Your solutions are not (always) pure...
 
 Yeah, well... JS kind of makes it a huge hassle sometimes, and I have limited time to do this.
 
