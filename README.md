@@ -44,3 +44,11 @@ Yeah, well... JS kind of makes it a huge hassle sometimes, and I have limited ti
 ## Why not other languages?
 
 Like Haskell and Scala? Been there, done that.
+
+## Why did you stop publishing your solutions after day 5
+
+In the spirit of a little competition, I don't think we should publish them before the contest ends. First five days were free... the rest you'll have to wait :)
+
+## So you are competing?
+
+More or less. The timezone is absurdly annoying (5AM GMT? Really?), and I would prefer to solve them in the end of the day; so I am competing just for the stars. Still, I am registered in [this private leaderboard](https://adventofcode.com/2018/leaderboard/private/view/240997).
