@@ -3,8 +3,9 @@ const _ = require('../combinators.js')
 const input = require('fs').readFileSync('src/10/input.txt').toString().split('\n')
 const data = input.map(line => line.match(/-?\d+/g).map(x => parseInt(x)))
 
-const compute = (step) => data.map(p => [p[0] + step * p[2], p[1] + step * p[3]])
+const compute = (t) => data.map(p => [p[0] + t * p[2], p[1] + t * p[3]])
 const area = (bb) => bb[2] - bb[0] + bb[3] - bb[1]
+const g = (t) => area(bbox(compute(t)))
 
 function bbox(data) {
     let x0 = +Infinity; let x1 = -Infinity
@@ -19,18 +20,19 @@ function bbox(data) {
 }
 
 let lastArea = +Infinity
-let counter = 0
+let t = 0
 
 do {
-    const newArea = area(bbox(compute(counter + 1)))
+    const newArea = g(t+1)
     if (newArea > lastArea) break
     lastArea = newArea
-    counter += 1
+    t += 1
 } while(true)
 
-console.log(counter) // 10681
+console.log(t) // 10681
 
-const st = compute(counter)
+// --- Print the message
+const st = compute(t)
 const bb = bbox(st)
 const ps = new Set(st.map(_.toString))
 

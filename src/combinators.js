@@ -49,6 +49,12 @@ export const histogram = _.pipe(group, _.map(_.size))
 export const nth = _.nth
 export const takeAt = (i, width) => _.slice(i, i + width)
 export const reduce = _.reduce
+export const findIndex = _.findIndex
+export const every = _.every
+export const slice = _.slice
+export const takeWhile = _.takeWhile
+export const dropWhile = _.dropWhile
+export const reverse = _.reverse
 
 export const tupleId = (p) => p[0] === p[1]
 export const swap = (f) => (a, b, ...r) => f(b, a, ...r)
